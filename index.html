@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineBook AI – Smart Movie and Book Recommendation System</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CineBook AI Design System CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Toast Notifications -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Authentication View Wrapper (Login & Register - Reference Panels 1 & 2) -->
+  <div id="authView" class="auth-view-wrapper">
+    
+    <!-- LOGIN PAGE SECTION (Reference Panel 1) -->
+    <div id="loginCardContainer" class="auth-card-container">
+      
+      <!-- Left Column: Branding, Cinema & Book Visuals -->
+      <div class="auth-branding-col">
+        <div class="sidebar-brand" style="border: none; padding: 0;">
+          <i class="fa-solid fa-film brand-icon"></i>
+          <span class="brand-text">CineBook <span>AI</span></span>
+        </div>
+
+        <!-- Cinema & Book Visual Centerpiece -->
+        <div class="cinema-book-artwork">
+          <div class="visual-icons-stage">
+            <i class="fa-solid fa-clapperboard art-clapperboard"></i>
+            <i class="fa-solid fa-book-open art-book"></i>
+            <i class="fa-solid fa-compact-disc art-reel"></i>
+          </div>
+          
+          <div class="auth-badges-row">
+            <span class="auth-badge-pill"><i class="fa-solid fa-film"></i> 10,000+ Movies</span>
+            <span class="auth-badge-pill"><i class="fa-solid fa-book"></i> 5,000+ Books</span>
+            <span class="auth-badge-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Rule-Based AI</span>
+          </div>
+        </div>
+
+        <!-- Branding Text & Subtitle -->
+        <div class="auth-brand-content">
+          <h2 class="auth-main-title">CineBook <span>AI</span></h2>
+          <p class="auth-main-subtitle">Smart Movie & Book Recommendation System</p>
+          <p class="auth-tagline">Discover your next favorite movie or book with personalized AI rules.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Glass Login Card -->
+      <div class="auth-form-col">
+        <div class="auth-form-header">
+          <h3 class="auth-form-title">Welcome Back</h3>
+          <p class="auth-form-desc">Login to continue to CineBook AI recommendation portal.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          
+          <!-- Input 1: Email Address -->
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address</label>
+            <div class="input-wrapper" id="emailInputWrapper">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input 
+                type="email" 
+                id="loginEmail" 
+                class="input-field" 
+                placeholder="Enter Email id:" 
+                autocomplete="email"
+                required>
+            </div>
+            <span class="input-feedback" id="emailFeedback"></span>
+          </div>
+
+          <!-- Input 2: Password -->
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <div class="input-wrapper" id="passwordInputWrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input 
+                type="password" 
+                id="loginPassword" 
+                class="input-field" 
+                placeholder="Enter your password" 
+                autocomplete="current-password"
+                required>
+              <button type="button" class="btn-toggle-password" id="togglePasswordBtn" aria-label="Show or hide password">
+                <i class="fa-solid fa-eye" id="togglePasswordIcon"></i>
+              </button>
+            </div>
+            <span class="input-feedback" id="passwordFeedback"></span>
+          </div>
+
+          <!-- Options Row: Remember Me & Forgot Password -->
+          <div class="auth-options-row">
+            <label class="checkbox-label" for="rememberMeCheckbox">
+              <input type="checkbox" id="rememberMeCheckbox" class="checkbox-custom">
+              <span>Remember me</span>
+            </label>
+            <a href="#" id="forgotPasswordLink" class="auth-link-alt">Forgot Password?</a>
+          </div>
+
+          <!-- Main Login Button -->
+          <button type="submit" class="btn btn-primary btn-block" id="btnLoginSubmit">
+            <span>Login</span>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
+
+          <!-- Register Link -->
+          <div class="auth-switch-footer">
+            <span>Don't have an account?</span>
+            <a href="#" id="toRegisterLink" class="auth-link">Register!</a>
+          </div>
+
+          <!-- Quick Demo Credentials Helper Pill for Evaluator -->
+          <div class="demo-helper-box">
+            <div class="demo-helper-text">
+              <i class="fa-solid fa-bolt" style="color: #ffb400; margin-right: 4px;"></i>
+              <strong>Demo:</strong> om.dhamale@cinebook.ai
+            </div>
+            <button type="button" class="btn-fill-demo" id="btnFillDemo">Auto-fill</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+    <!-- REGISTER / PROFILE CREATION SECTION (Reference Panel 2) -->
+    <div id="registerCardContainer" class="auth-card-container register-card-container" style="display: none;">
+      
+      <!-- Left Column: Branding -->
+      <div class="auth-branding-col">
+        <div class="sidebar-brand" style="border: none; padding: 0;">
+          <i class="fa-solid fa-film brand-icon"></i>
+          <span class="brand-text">CineBook <span>AI</span></span>
+        </div>
+
+        <div class="cinema-book-artwork">
+          <div class="visual-icons-stage">
+            <i class="fa-solid fa-clapperboard art-clapperboard"></i>
+            <i class="fa-solid fa-book-open art-book"></i>
+            <i class="fa-solid fa-compact-disc art-reel"></i>
+          </div>
+          <div class="auth-badges-row">
+            <span class="auth-badge-pill"><i class="fa-solid fa-id-card"></i> Smart Profile</span>
+            <span class="auth-badge-pill"><i class="fa-solid fa-brain"></i> Rule-Based AI</span>
+            <span class="auth-badge-pill"><i class="fa-solid fa-sliders"></i> Tailored Engine</span>
+          </div>
+        </div>
+
+        <div class="auth-brand-content">
+          <h2 class="auth-main-title">CineBook <span>AI</span></h2>
+          <p class="auth-main-subtitle">Smart Movie & Book Recommendation System</p>
+          <p class="auth-tagline">Create your profile and get personalized movie and book recommendations.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Registration Form -->
+      <div class="auth-form-col">
+        <div class="auth-form-header">
+          <h3 class="auth-form-title">Create Your Profile</h3>
+          <p class="auth-form-desc">Set your tastes so our rule-based AI can recommend the perfect stories for you.</p>
+        </div>
+
+        <form id="registerForm" class="auth-form" novalidate>
+          
+          <!-- Row 1: Full Name & Email Address -->
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label" for="regName">Full Name</label>
+              <div class="input-wrapper" id="regNameWrapper">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="regName" class="input-field" placeholder="Enter your name" required>
+              </div>
+              <span class="input-feedback" id="regNameFeedback"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regEmail">Email Address</label>
+              <div class="input-wrapper" id="regEmailWrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" class="input-field" placeholder="Enter your email" required>
+              </div>
+              <span class="input-feedback" id="regEmailFeedback"></span>
+            </div>
+          </div>
+
+          <!-- Row 2: Password & Confirm Password -->
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label" for="regPassword">Password</label>
+              <div class="input-wrapper" id="regPasswordWrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="regPassword" class="input-field" placeholder="Create password" required>
+                <button type="button" class="btn-toggle-password" id="toggleRegPasswordBtn" aria-label="Toggle password visibility">
+                  <i class="fa-solid fa-eye" id="toggleRegPasswordIcon"></i>
+                </button>
+              </div>
+              <span class="input-feedback" id="regPasswordFeedback"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regConfirmPassword">Confirm Password</label>
+              <div class="input-wrapper" id="regConfirmPasswordWrapper">
+                <i class="fa-solid fa-shield-halved input-icon"></i>
+                <input type="password" id="regConfirmPassword" class="input-field" placeholder="Confirm password" required>
+                <button type="button" class="btn-toggle-password" id="toggleRegConfirmPasswordBtn" aria-label="Toggle confirm password visibility">
+                  <i class="fa-solid fa-eye" id="toggleRegConfirmPasswordIcon"></i>
+                </button>
+              </div>
+              <span class="input-feedback" id="regConfirmPasswordFeedback"></span>
+            </div>
+          </div>
+
+          <!-- Row 3: Date of Birth & Preferred Language -->
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label" for="regDob">Date of Birth</label>
+              <div class="input-wrapper" id="regDobWrapper">
+                <i class="fa-solid fa-calendar-days input-icon"></i>
+                <input type="date" id="regDob" class="input-field" required>
+              </div>
+              <span class="input-feedback" id="regDobFeedback"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regLanguage">Preferred Language</label>
+              <div class="input-wrapper" id="regLangWrapper">
+                <i class="fa-solid fa-globe input-icon"></i>
+                <select id="regLanguage" class="form-select" required>
+                  <option value="" disabled selected>Select Language</option>
+                  <option value="English">English</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Marathi">Marathi</option>
+                  <option value="Other">Other</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-caret"></i>
+              </div>
+              <span class="input-feedback" id="regLangFeedback"></span>
+            </div>
+          </div>
+
+          <!-- Row 4: Preferred Movie Genre & Preferred Book Genre -->
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label" for="regMovieGenre">Preferred Movie Genre</label>
+              <div class="input-wrapper" id="regMovieGenreWrapper">
+                <i class="fa-solid fa-film input-icon"></i>
+                <select id="regMovieGenre" class="form-select" required>
+                  <option value="" disabled selected>Select Movie Genre</option>
+                  <option value="Action">Action</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Mystery">Mystery</option>
+                  <option value="Thriller">Thriller</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Animation">Animation</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-caret"></i>
+              </div>
+              <span class="input-feedback" id="regMovieGenreFeedback"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regBookGenre">Preferred Book Genre</label>
+              <div class="input-wrapper" id="regBookGenreWrapper">
+                <i class="fa-solid fa-book-open input-icon"></i>
+                <select id="regBookGenre" class="form-select" required>
+                  <option value="" disabled selected>Select Book Genre</option>
+                  <option value="Fiction">Fiction</option>
+                  <option value="Mystery">Mystery</option>
+                  <option value="Thriller">Thriller</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Fantasy">Fantasy</option>
+                  <option value="Biography">Biography</option>
+                  <option value="Self-Help">Self-Help</option>
+                  <option value="History">History</option>
+                  <option value="Science">Science</option>
+                  <option value="Adventure">Adventure</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-caret"></i>
+              </div>
+              <span class="input-feedback" id="regBookGenreFeedback"></span>
+            </div>
+          </div>
+
+          <!-- Row 5: Preferred Mood -->
+          <div class="form-group">
+            <label class="form-label" for="regMood">Preferred Mood</label>
+            <div class="input-wrapper" id="regMoodWrapper">
+              <i class="fa-solid fa-face-smile input-icon"></i>
+              <select id="regMood" class="form-select" required>
+                <option value="" disabled selected>Select Current Mood</option>
+                <option value="Happy">Happy</option>
+                <option value="Excited">Excited</option>
+                <option value="Relaxed">Relaxed</option>
+                <option value="Romantic">Romantic</option>
+                <option value="Curious">Curious</option>
+                <option value="Serious">Serious</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-caret"></i>
+            </div>
+            <span class="input-feedback" id="regMoodFeedback"></span>
+          </div>
+
+          <!-- Main Button: Create Account -->
+          <button type="submit" class="btn btn-primary btn-block" id="btnRegisterSubmit">
+            <span>Create Account</span>
+            <i class="fa-solid fa-user-plus"></i>
+          </button>
+
+          <!-- Return to Login Link -->
+          <div class="auth-switch-footer">
+            <span>Already have an account?</span>
+            <a href="#" id="toLoginLink" class="auth-link">Login!</a>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Main Website Shell (Hidden until authenticated) -->
+  <div id="mainAppShell" class="main-app-shell" style="display: none;">
+
+    <!-- Mobile Topbar Navigation -->
+    <header class="mobile-topbar">
+      <div class="sidebar-brand" style="border: none; padding: 0;">
+        <i class="fa-solid fa-film brand-icon"></i>
+        <span class="brand-text">CineBook <span>AI</span></span>
+      </div>
+      <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </header>
+
+    <!-- Backdrop for Mobile Sidebar Drawer -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <div class="app-container">
+
+    <!-- Reusable Left Sidebar Navigation (Matching Reference UI) -->
+    <aside id="appSidebar" class="app-sidebar">
+      
+      <!-- Brand Logo -->
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-film brand-icon"></i>
+        <h1 class="brand-text">CineBook <span>AI</span></h1>
+        <button id="sidebarCloseBtn" class="mobile-sidebar-close" aria-label="Close navigation menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- User Profile Badge -->
+      <div class="sidebar-profile">
+        <div class="avatar-circle" id="sidebarProfileAvatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="profile-info">
+          <span class="profile-name" id="sidebarProfileName">Om Dhamale</span>
+          <span class="profile-tag" id="sidebarProfileTag">Movie & Book Lover</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <a href="#home" class="nav-item active" data-nav="home">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+        <a href="#movies" class="nav-item" data-nav="movies">
+          <i class="fa-solid fa-film"></i>
+          <span>My Movies</span>
+        </a>
+        <a href="#books" class="nav-item" data-nav="books">
+          <i class="fa-solid fa-book-open"></i>
+          <span>My Books</span>
+        </a>
+        <a href="#wishlist" class="nav-item" data-nav="wishlist">
+          <i class="fa-solid fa-heart"></i>
+          <span>My Wishlist</span>
+        </a>
+        <a href="#history" class="nav-item" data-nav="history">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>Watch History</span>
+        </a>
+        <a href="#profile" class="nav-item" data-nav="profile">
+          <i class="fa-solid fa-user-gear"></i>
+          <span>Profile</span>
+        </a>
+      </nav>
+
+      <!-- Bottom Logout Button -->
+      <div class="sidebar-footer">
+        <a href="#logout" class="nav-item-logout" id="logoutBtn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- Main Content Viewport -->
+    <main class="app-main">
+
+      <!-- ================================================================
+           VIEW 1: HOME PAGE DASHBOARD (Panel 3 Reference)
+           ================================================================ -->
+      <div id="homeView" class="app-view-section active">
+
+        <!-- 1. Cinematic Hero Section -->
+        <section class="home-hero-card">
+          <div class="hero-greeting-tag">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span id="userGreetingText">Welcome back, Om 👋</span>
+          </div>
+
+          <h2 class="hero-title">
+            Find Your Next Favorite <span class="accent-pink">Story or Movie !!</span>
+          </h2>
+          <p class="hero-subtitle">
+            Tell us what you like and our rule-based AI will recommend books and movies for you.
+          </p>
+
+          <!-- Two Large Action Buttons for Media Type -->
+          <div class="hero-media-buttons">
+            <button class="hero-media-btn active" id="heroBtnMovies" data-media="movies">
+              <i class="fa-solid fa-film"></i>
+              <span>Movies</span>
+            </button>
+            <button class="hero-media-btn" id="heroBtnBooks" data-media="books">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Books</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. Preference & Genre Selection Panel (Panel 3 Reference) -->
+        <section class="glass-panel">
+          
+          <!-- Category Section Header -->
+          <div style="margin-bottom: 22px;">
+            <span class="page-category-label">Category Selection</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-white); margin-top: 4px;">
+              What are you in the mood for?
+            </h3>
+          </div>
+
+          <!-- Movie Genres Grid (Shown when Movies is active) -->
+          <div id="movieGenresSection" style="margin-bottom: 28px;">
+            <div class="genre-grid" id="movieGenresGrid">
+              <button class="genre-card-btn genre-action active" data-genre="Action">
+                <i class="fa-solid fa-clapperboard"></i>
+                <span>Action</span>
+              </button>
+              <button class="genre-card-btn genre-comedy" data-genre="Comedy">
+                <i class="fa-solid fa-face-laugh-beam"></i>
+                <span>Comedy</span>
+              </button>
+              <button class="genre-card-btn genre-romance" data-genre="Romance">
+                <i class="fa-solid fa-heart"></i>
+                <span>Romance</span>
+              </button>
+              <button class="genre-card-btn genre-mystery" data-genre="Mystery">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Mystery</span>
+              </button>
+              <button class="genre-card-btn genre-thriller" data-genre="Thriller">
+                <i class="fa-solid fa-fire"></i>
+                <span>Thriller</span>
+              </button>
+              <button class="genre-card-btn genre-horror" data-genre="Horror">
+                <i class="fa-solid fa-ghost"></i>
+                <span>Horror</span>
+              </button>
+              <button class="genre-card-btn genre-scifi" data-genre="Sci-Fi">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Sci-Fi</span>
+              </button>
+              <button class="genre-card-btn genre-adventure" data-genre="Adventure">
+                <i class="fa-solid fa-compass"></i>
+                <span>Adventure</span>
+              </button>
+              <button class="genre-card-btn genre-drama" data-genre="Drama">
+                <i class="fa-solid fa-masks-theater"></i>
+                <span>Drama</span>
+              </button>
+              <button class="genre-card-btn genre-animation" data-genre="Animation">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Animation</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Book Genres Grid (Shown when Books is active) -->
+          <div id="bookGenresSection" style="margin-bottom: 28px; display: none;">
+            <div class="genre-grid" id="bookGenresGrid">
+              <button class="genre-card-btn genre-fiction active" data-genre="Fiction">
+                <i class="fa-solid fa-book"></i>
+                <span>Fiction</span>
+              </button>
+              <button class="genre-card-btn genre-mystery" data-genre="Mystery">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Mystery</span>
+              </button>
+              <button class="genre-card-btn genre-thriller" data-genre="Thriller">
+                <i class="fa-solid fa-fire"></i>
+                <span>Thriller</span>
+              </button>
+              <button class="genre-card-btn genre-romance" data-genre="Romance">
+                <i class="fa-solid fa-heart"></i>
+                <span>Romance</span>
+              </button>
+              <button class="genre-card-btn genre-fantasy" data-genre="Fantasy">
+                <i class="fa-solid fa-hat-wizard"></i>
+                <span>Fantasy</span>
+              </button>
+              <button class="genre-card-btn genre-biography" data-genre="Biography">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Biography</span>
+              </button>
+              <button class="genre-card-btn genre-selfhelp" data-genre="Self-Help">
+                <i class="fa-solid fa-brain"></i>
+                <span>Self-Help</span>
+              </button>
+              <button class="genre-card-btn genre-history" data-genre="History">
+                <i class="fa-solid fa-landmark"></i>
+                <span>History</span>
+              </button>
+              <button class="genre-card-btn genre-science" data-genre="Science">
+                <i class="fa-solid fa-flask"></i>
+                <span>Science</span>
+              </button>
+              <button class="genre-card-btn genre-adventure" data-genre="Adventure">
+                <i class="fa-solid fa-mountain"></i>
+                <span>Adventure</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Preference Filter Rows -->
+          <div style="margin-bottom: 18px;">
+            <span class="page-category-label">Filters</span>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--text-white); margin-top: 4px;">
+              Personalize Your Recommendations
+            </h4>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
+            
+            <!-- Duration -->
+            <div class="filter-row" id="filterRowDuration">
+              <span class="filter-title">Duration:</span>
+              <div class="filter-options">
+                <button class="filter-pill active" data-val="Short">Short</button>
+                <button class="filter-pill" data-val="Medium">Medium</button>
+                <button class="filter-pill" data-val="Long">Long</button>
+              </div>
+            </div>
+
+            <!-- Language -->
+            <div class="filter-row" id="filterRowLanguage">
+              <span class="filter-title">Language:</span>
+              <div class="filter-options">
+                <button class="filter-pill active" data-val="English">English</button>
+                <button class="filter-pill" data-val="Hindi">Hindi</button>
+                <button class="filter-pill" data-val="Marathi">Marathi</button>
+                <button class="filter-pill" data-val="Other">Other</button>
+              </div>
+            </div>
+
+            <!-- Rating -->
+            <div class="filter-row" id="filterRowRating">
+              <span class="filter-title">Rating:</span>
+              <div class="filter-options">
+                <button class="filter-pill active" data-val="9+">9+</button>
+                <button class="filter-pill" data-val="8+">8+</button>
+                <button class="filter-pill" data-val="7+">7+</button>
+              </div>
+            </div>
+
+            <!-- Mood -->
+            <div class="filter-row" id="filterRowMood">
+              <span class="filter-title">Mood:</span>
+              <div class="filter-options">
+                <button class="filter-pill mood-pill active" data-val="Happy"><i class="fa-solid fa-face-smile"></i> Happy</button>
+                <button class="filter-pill mood-pill" data-val="Excited"><i class="fa-solid fa-bolt"></i> Excited</button>
+                <button class="filter-pill mood-pill" data-val="Relaxed"><i class="fa-solid fa-mug-hot"></i> Relaxed</button>
+                <button class="filter-pill mood-pill" data-val="Romantic"><i class="fa-solid fa-heart"></i> Romantic</button>
+                <button class="filter-pill mood-pill" data-val="Curious"><i class="fa-solid fa-compass"></i> Curious</button>
+                <button class="filter-pill mood-pill" data-val="Serious"><i class="fa-solid fa-glasses"></i> Serious</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Get Started CTA Button -->
+          <div>
+            <button class="btn btn-cta" id="btnGetStarted">
+              <span>Get Started</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+        </section>
+
+        <!-- 4. Quick Recommendations Section ("Popular For You") -->
+        <section style="margin-top: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="page-category-label">Curated Selection</span>
+              <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-white); margin-top: 4px;">
+                Popular For You
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Handpicked trending movies and top-rated books ready to explore.
+              </p>
+            </div>
+
+            <!-- Filter Switchers -->
+            <div class="tab-pills" style="margin-bottom: 0;">
+              <button class="tab-pill-btn active" id="tabFilterAll" data-type="all">
+                <i class="fa-solid fa-fire"></i>
+                <span>All</span>
+              </button>
+              <button class="tab-pill-btn" id="tabFilterMovies" data-type="movies">
+                <i class="fa-solid fa-film"></i>
+                <span>Movies</span>
+              </button>
+              <button class="tab-pill-btn" id="tabFilterBooks" data-type="books">
+                <i class="fa-solid fa-book"></i>
+                <span>Books</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Popular Cards Grid (Populated via script.js from movies.json & books.json) -->
+          <div class="media-grid" id="popularMediaGrid">
+            <!-- Rendered by JavaScript -->
+          </div>
+        </section>
+
+        <!-- 5. AI Explanation Pipeline Section -->
+        <section class="ai-architecture-section">
+          <div style="margin-bottom: 12px;">
+            <span class="page-category-label" style="color: var(--color-cyan);">AI Engine Architecture</span>
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-white); display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+              <i class="fa-solid fa-brain" style="color: var(--color-pink);"></i>
+              How CineBook AI Works
+            </h3>
+            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; max-width: 800px; margin-top: 6px;">
+              Your selected preferences become facts in working memory. The rule-based inference engine applies IF-THEN rules to find matching movies and books.
+            </p>
+          </div>
+
+          <!-- Visual Flow Pipeline -->
+          <div class="ai-pipeline-track">
+            
+            <div class="pipeline-node">
+              <div class="pipeline-node-icon"><i class="fa-solid fa-sliders"></i></div>
+              <span class="pipeline-node-title">Preferences</span>
+              <span class="pipeline-node-desc">Genre, Mood, Rating</span>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+            <div class="pipeline-node">
+              <div class="pipeline-node-icon"><i class="fa-solid fa-database"></i></div>
+              <span class="pipeline-node-title">Working Memory</span>
+              <span class="pipeline-node-desc">Asserted User Facts</span>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+            <div class="pipeline-node">
+              <div class="pipeline-node-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+              <span class="pipeline-node-title">Rule Base</span>
+              <span class="pipeline-node-desc">Domain Knowledge IF-THEN</span>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+            <div class="pipeline-node">
+              <div class="pipeline-node-icon"><i class="fa-solid fa-microchip"></i></div>
+              <span class="pipeline-node-title">Inference Engine</span>
+              <span class="pipeline-node-desc">Pattern Matching & Conflict</span>
+            </div>
+
+            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+            <div class="pipeline-node">
+              <div class="pipeline-node-icon"><i class="fa-solid fa-star"></i></div>
+              <span class="pipeline-node-title">Recommendations</span>
+              <span class="pipeline-node-desc">Tailored Output Feed</span>
+            </div>
+
+          </div>
+
+          <!-- Rule Examples -->
+          <div style="margin-top: 24px;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; color: #ffb400; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-code"></i>
+              Live Rule Base Examples:
+            </h4>
+
+            <div class="ai-rules-grid">
+              <div class="ai-rule-card">
+                <div><span class="rule-badge-if">IF</span> Genre = Action <span class="rule-badge-and">AND</span> Mood = Excited</div>
+                <div><span class="rule-badge-then">THEN</span> Recommend Action Movies</div>
+              </div>
+
+              <div class="ai-rule-card">
+                <div><span class="rule-badge-if">IF</span> Book Genre = Fantasy <span class="rule-badge-and">AND</span> Mood = Curious</div>
+                <div><span class="rule-badge-then">THEN</span> Recommend Fantasy Books</div>
+              </div>
+
+              <div class="ai-rule-card">
+                <div><span class="rule-badge-if">IF</span> Language = Hindi</div>
+                <div><span class="rule-badge-then">THEN</span> Prioritize Hindi Content</div>
+              </div>
+
+              <div class="ai-rule-card">
+                <div><span class="rule-badge-if">IF</span> Rating = 8+</div>
+                <div><span class="rule-badge-then">THEN</span> Prioritize Highly Rated Content</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ================================================================
+           VIEW 2: RECOMMENDED MOVIES (Panel 4 Reference - Step 5)
+           ================================================================ -->
+      <div id="moviesView" class="app-view-section">
+        
+        <!-- 1. Header with Search Bar (Panel 4) -->
+        <section class="page-header">
+          <div class="page-title-group">
+            <span class="page-category-label">Cinema</span>
+            <h2 class="page-title">
+              <i class="fa-solid fa-film accent-pink"></i> 
+              Recommended Movies
+            </h2>
+          </div>
+
+          <div class="search-container">
+            <input type="text" id="movieSearchInput" placeholder="Search movies...">
+            <button class="search-btn" id="movieSearchBtn" aria-label="Search movies">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. AI Inference Engine Working Memory Status Banner -->
+        <div class="ai-status-banner">
+          <div class="ai-status-info">
+            <span class="ai-status-badge"><i class="fa-solid fa-microchip"></i> Expert System Active</span>
+            <div class="ai-status-facts" id="movieInferenceFacts">
+              <span>Working Memory Facts:</span>
+              <span class="ai-fact-tag" id="factGenre">Genre: Action</span>
+              <span class="ai-fact-tag" id="factMood">Mood: Excited</span>
+              <span class="ai-fact-tag" id="factLang">Lang: English</span>
+              <span class="ai-fact-tag" id="factRating">Rating: 8+</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary" id="btnTweakMovieRules" style="padding: 6px 14px; font-size: 0.8rem;">
+            <i class="fa-solid fa-sliders"></i> Modify Preferences
+          </button>
+        </div>
+
+        <!-- 3. Movie Filter & Sort Toolbar -->
+        <div class="movie-filters-toolbar">
+          <div class="movie-filters-group">
+            <!-- Genre Filter -->
+            <select id="filterMovieGenre" class="filter-select" aria-label="Filter by genre">
+              <option value="All">All Genres</option>
+              <option value="Action">Action</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Drama">Drama</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Romance">Romance</option>
+            </select>
+
+            <!-- Language Filter -->
+            <select id="filterMovieLang" class="filter-select" aria-label="Filter by language">
+              <option value="All">All Languages</option>
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+            </select>
+
+            <!-- Rating Filter -->
+            <select id="filterMovieRating" class="filter-select" aria-label="Filter by rating">
+              <option value="All">All Ratings</option>
+              <option value="9">9.0+ Stars</option>
+              <option value="8.5">8.5+ Stars</option>
+              <option value="8">8.0+ Stars</option>
+            </select>
+
+            <!-- Duration Filter -->
+            <select id="filterMovieDuration" class="filter-select" aria-label="Filter by duration">
+              <option value="All">All Durations</option>
+              <option value="Short">Short</option>
+              <option value="Medium">Medium</option>
+              <option value="Long">Long</option>
+            </select>
+
+            <!-- Sort By Filter -->
+            <select id="sortMovieBy" class="filter-select" aria-label="Sort movies by">
+              <option value="ai">AI Match Score (Highest First)</option>
+              <option value="rating">Rating (Highest First)</option>
+              <option value="year">Release Year (Newest First)</option>
+              <option value="title">Title (A to Z)</option>
+            </select>
+          </div>
+
+          <!-- Results Count Indicator -->
+          <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+            <span id="movieResultsCount">Loading movies...</span>
+          </div>
+        </div>
+
+        <!-- 4. 5-Column Responsive Movie Grid (Panel 4) -->
+        <div class="movies-grid-5col" id="moviesPageGrid">
+          <!-- Populated dynamically via Rule-Based AI Engine in script.js -->
+        </div>
+
+      </div>
+
+      <!-- ================================================================
+           VIEW 3: RECOMMENDED BOOKS (Panel 5 Preview / Ready for Step 6)
+           ================================================================ -->
+      <div id="booksView" class="app-view-section">
+
+        <!-- 1. Header with Search Bar -->
+        <section class="page-header">
+          <div class="page-title-group">
+            <span class="page-category-label">Literature</span>
+            <h2 class="page-title">
+              <i class="fa-solid fa-book-open accent-pink"></i>
+              Recommended Books
+            </h2>
+          </div>
+          <div class="search-container">
+            <input type="text" id="bookSearchInput" placeholder="Search books or author...">
+            <button class="search-btn" id="bookSearchBtn" aria-label="Search books">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. AI Inference Engine Working Memory Status Banner -->
+        <div class="ai-status-banner">
+          <div class="ai-status-info">
+            <span class="ai-status-badge"><i class="fa-solid fa-microchip"></i> Expert System Active</span>
+            <div class="ai-status-facts" id="bookInferenceFacts">
+              <span>Working Memory Facts:</span>
+              <span class="ai-fact-tag" id="bookFactGenre">Genre: Fantasy</span>
+              <span class="ai-fact-tag" id="bookFactMood">Mood: Excited</span>
+              <span class="ai-fact-tag" id="bookFactLang">Lang: English</span>
+              <span class="ai-fact-tag" id="bookFactRating">Rating: 8+</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary" id="btnTweakBookRules" style="padding: 6px 14px; font-size: 0.8rem;">
+            <i class="fa-solid fa-sliders"></i> Modify Preferences
+          </button>
+        </div>
+
+        <!-- 3. Book Filter & Sort Toolbar -->
+        <div class="movie-filters-toolbar">
+          <div class="movie-filters-group">
+            <!-- Genre Filter -->
+            <select id="filterBookGenre" class="filter-select" aria-label="Filter by genre">
+              <option value="All">All Genres</option>
+              <option value="Self-Help">Self-Help</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Biography">Biography</option>
+              <option value="Finance">Finance</option>
+              <option value="Science">Science</option>
+              <option value="History">History</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Philosophy">Philosophy</option>
+            </select>
+
+            <!-- Language Filter -->
+            <select id="filterBookLang" class="filter-select" aria-label="Filter by language">
+              <option value="All">All Languages</option>
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+            </select>
+
+            <!-- Rating Filter -->
+            <select id="filterBookRating" class="filter-select" aria-label="Filter by rating">
+              <option value="All">All Ratings</option>
+              <option value="9">9.0+ Stars</option>
+              <option value="8.5">8.5+ Stars</option>
+              <option value="8">8.0+ Stars</option>
+            </select>
+
+            <!-- Duration / Length Filter -->
+            <select id="filterBookDuration" class="filter-select" aria-label="Filter by length">
+              <option value="All">All Lengths</option>
+              <option value="Short">Short (&lt;250 pages)</option>
+              <option value="Medium">Medium (250–350 pages)</option>
+              <option value="Long">Long (&gt;350 pages)</option>
+            </select>
+
+            <!-- Sort By -->
+            <select id="sortBookBy" class="filter-select" aria-label="Sort books by">
+              <option value="ai">AI Match Score (Highest First)</option>
+              <option value="rating">Rating (Highest First)</option>
+              <option value="year">Year (Newest First)</option>
+              <option value="title">Title (A to Z)</option>
+            </select>
+          </div>
+
+          <!-- Results Count Indicator -->
+          <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
+            <span id="bookResultsCount">Loading books...</span>
+          </div>
+        </div>
+
+        <!-- 4. 5-Column Responsive Book Grid -->
+        <div class="movies-grid-5col" id="booksPageGrid">
+          <!-- Populated dynamically via Rule-Based AI Engine in script.js -->
+        </div>
+
+      </div>
+
+      <!-- ================================================================
+           VIEW 4: MY WISHLIST (Panel 7)
+           ================================================================ -->
+      <div id="wishlistView" class="app-view-section">
+        <section class="page-header">
+          <div class="page-title-group">
+            <span class="page-category-label">Saved</span>
+            <h2 class="page-title"><i class="fa-solid fa-heart accent-pink"></i> My Wishlist</h2>
+          </div>
+        </section>
+        <div class="tab-pills">
+          <button class="tab-pill-btn active" id="tabWishlistMovies"><i class="fa-solid fa-film"></i> Movie Wishlist (<span id="wishlistMovieCount">0</span>)</button>
+          <button class="tab-pill-btn" id="tabWishlistBooks"><i class="fa-solid fa-book"></i> Book Wishlist (<span id="wishlistBookCount">0</span>)</button>
+        </div>
+        <div class="movies-grid-5col" id="wishlistGrid"></div>
+      </div>
+
+      <!-- ================================================================
+           VIEW 5: WATCH & READ HISTORY (Panel 8)
+           ================================================================ -->
+      <div id="historyView" class="app-view-section">
+        <section class="page-header">
+          <div class="page-title-group">
+            <span class="page-category-label">Activity</span>
+            <h2 class="page-title"><i class="fa-solid fa-clock-rotate-left accent-pink"></i> Watch & Read History</h2>
+          </div>
+        </section>
+        <div class="history-controls-toolbar">
+          <div class="tab-pills" style="margin-bottom: 0;">
+            <button class="tab-pill-btn active" id="tabHistoryMovies"><i class="fa-solid fa-film"></i> Movies History (<span id="historyMovieCount">0</span>)</button>
+            <button class="tab-pill-btn" id="tabHistoryBooks"><i class="fa-solid fa-book"></i> Books History (<span id="historyBookCount">0</span>)</button>
+          </div>
+          <button class="btn btn-secondary" id="btnClearHistory" style="padding: 8px 16px; font-size: 0.85rem; border-color: rgba(255, 42, 109, 0.4); color: #ff7597;">
+            <i class="fa-solid fa-trash-can"></i> Clear History
+          </button>
+        </div>
+        <div class="history-list" id="historyList"></div>
+      </div>
+
+      <!-- ================================================================
+           VIEW 6: PROFILE & PREFERENCES (Panel 9)
+           ================================================================ -->
+      <div id="profileView" class="app-view-section">
+        <section class="page-header">
+          <div class="page-title-group">
+            <span class="page-category-label">Account</span>
+            <h2 class="page-title"><i class="fa-solid fa-user-gear accent-pink"></i> Profile Settings</h2>
+          </div>
+        </section>
+        <div id="profileSettingsPanel"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Reusable Details Modal Popup (Panel 6 Reference) -->
+  <div id="detailsModal" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close details">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-body">
+        <div class="modal-poster-col">
+          <img id="modalImg" src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Poster Detail">
+        </div>
+
+        <div class="modal-info-col">
+          <h3 id="modalTitle" class="modal-title">Interstellar (2014)</h3>
+          
+          <div class="modal-specs-list">
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-value">: Movie</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Genre</span>
+              <span class="spec-value">: Sci-Fi</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Language</span>
+              <span class="spec-value">: English</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Rating</span>
+              <span class="spec-value">: 8.6/10</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Duration</span>
+              <span class="spec-value">: Long</span>
+            </div>
+          </div>
+
+          <p class="modal-desc" id="modalDescription">
+            A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.
+          </p>
+
+          <!-- AI Explanation Rule Box (Reference Panel 6) -->
+          <div class="ai-rule-box">
+            <div class="ai-rule-title">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>Why this movie?</span>
+            </div>
+            <div class="ai-match-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Genre matched: Sci-Fi</span>
+            </div>
+            <div class="ai-match-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Mood matched: Excited</span>
+            </div>
+            <div class="ai-match-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Language matched: English</span>
+            </div>
+            <div class="ai-match-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Rating matched: 8+</span>
+            </div>
+            <div class="ai-rule-fired">
+              ⚙️ Rule fired: IF Genre = Sci-Fi AND Mood = Excited THEN Recommend Sci-Fi movies.
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-primary">
+              <i class="fa-solid fa-heart"></i>
+              <span>Add to Wishlist</span>
+            </button>
+            <button class="btn btn-secondary" id="modalDismissBtn">
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div> <!-- End #mainAppShell -->
+
+  <!-- CineBook AI Foundation Script -->
+  <script src="script.js"></script>
+</body>
+</html>

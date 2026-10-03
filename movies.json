@@ -1,0 +1,401 @@
+[
+  {
+    "id": "m1",
+    "title": "Interstellar",
+    "year": 2014,
+    "rating": 8.6,
+    "type": "Movie",
+    "genre": "Sci-Fi",
+    "secondaryGenre": "Adventure",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Excited",
+    "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival as Earth faces catastrophic famine.",
+    "aiRuleMatch": {
+      "genreMatched": "Sci-Fi",
+      "moodMatched": "Excited",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Sci-Fi AND Mood = Excited THEN Recommend Sci-Fi movies."
+    }
+  },
+  {
+    "id": "m2",
+    "title": "Inception",
+    "year": 2010,
+    "rating": 8.8,
+    "type": "Movie",
+    "genre": "Sci-Fi",
+    "secondaryGenre": "Thriller",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Thoughtful",
+    "poster": "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+    "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "aiRuleMatch": {
+      "genreMatched": "Sci-Fi",
+      "moodMatched": "Thoughtful",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Sci-Fi AND Mood = Thoughtful THEN Recommend Sci-Fi thrillers."
+    }
+  },
+  {
+    "id": "m3",
+    "title": "The Dark Knight",
+    "year": 2008,
+    "rating": 9.0,
+    "type": "Movie",
+    "genre": "Action",
+    "secondaryGenre": "Crime",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Intense",
+    "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological tests of his ability to fight injustice.",
+    "aiRuleMatch": {
+      "genreMatched": "Action",
+      "moodMatched": "Intense",
+      "languageMatched": "English",
+      "ratingMatched": "9+",
+      "ruleFired": "IF Genre = Action AND Rating >= 9.0 THEN Recommend Top Action masterpieces."
+    }
+  },
+  {
+    "id": "m4",
+    "title": "Avengers: Endgame",
+    "year": 2019,
+    "rating": 8.4,
+    "type": "Movie",
+    "genre": "Action",
+    "secondaryGenre": "Sci-Fi",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Excited",
+    "poster": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    "description": "After the devastating events of Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more to reverse Thanos' actions.",
+    "aiRuleMatch": {
+      "genreMatched": "Action",
+      "moodMatched": "Excited",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Action AND Mood = Excited THEN Recommend Superhero epics."
+    }
+  },
+  {
+    "id": "m5",
+    "title": "3 Idiots",
+    "year": 2009,
+    "rating": 8.4,
+    "type": "Movie",
+    "genre": "Comedy",
+    "secondaryGenre": "Drama",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Happy",
+    "poster": "https://image.tmdb.org/t/p/w500/7c47s7b6U2l4U7kHhYIu09q5hO6.jpg",
+    "description": "Two friends embark on a quest for a lost buddy. On this journey, they reminisce about their college days and their friend who inspired them to think differently.",
+    "aiRuleMatch": {
+      "genreMatched": "Comedy",
+      "moodMatched": "Happy",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Comedy AND Mood = Happy THEN Recommend Uplifting college dramas."
+    }
+  },
+  {
+    "id": "m6",
+    "title": "Zindagi Na Milegi Dobara",
+    "year": 2011,
+    "rating": 8.2,
+    "type": "Movie",
+    "genre": "Drama",
+    "secondaryGenre": "Adventure",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Relaxed",
+    "poster": "https://image.tmdb.org/t/p/w500/9s9Q53tq18L2X4M7XoQv5yR6A2L.jpg",
+    "description": "Three friends decide to turn their fantasy vacation into reality after one of their friends gets engaged, discovering deep truths about their lives and fears.",
+    "aiRuleMatch": {
+      "genreMatched": "Drama",
+      "moodMatched": "Relaxed",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Drama AND Language = Hindi THEN Recommend Road trip journey dramas."
+    }
+  },
+  {
+    "id": "m7",
+    "title": "Dangal",
+    "year": 2016,
+    "rating": 8.4,
+    "type": "Movie",
+    "genre": "Drama",
+    "secondaryGenre": "Action",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Inspired",
+    "poster": "https://image.tmdb.org/t/p/w500/4cpmb1oT55R5U6YI0kK8XGqN5oF.jpg",
+    "description": "Former wrestler Mahavir Singh Phogat and his two wrestler daughters struggle towards glory at the Commonwealth Games in the face of societal oppression.",
+    "aiRuleMatch": {
+      "genreMatched": "Drama",
+      "moodMatched": "Inspired",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Drama AND Mood = Inspired THEN Recommend Motivational sports biopics."
+    }
+  },
+  {
+    "id": "m8",
+    "title": "KGF Chapter 1",
+    "year": 2018,
+    "rating": 8.2,
+    "type": "Movie",
+    "genre": "Action",
+    "secondaryGenre": "Drama",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Intense",
+    "poster": "https://image.tmdb.org/t/p/w500/i9nO0V2gqT9qM0R5L8Y5V8R7o6l.jpg",
+    "description": "In the 1970s, a fierce rebel rises against brutal oppression and becomes the symbol of hope to legions of downtrodden people in the Kolar Gold Fields.",
+    "aiRuleMatch": {
+      "genreMatched": "Action",
+      "moodMatched": "Intense",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Action AND Mood = Intense THEN Recommend Mass action blockbusters."
+    }
+  },
+  {
+    "id": "m9",
+    "title": "RRR",
+    "year": 2022,
+    "rating": 8.4,
+    "type": "Movie",
+    "genre": "Action",
+    "secondaryGenre": "Drama",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Excited",
+    "poster": "https://image.tmdb.org/t/p/w500/wE0noFU9ErUsh2b1iW9m31fBwE4.jpg",
+    "description": "A fearless revolutionary and an officer in the British force, who once were friends, unite against a common tyrant in 1920s India.",
+    "aiRuleMatch": {
+      "genreMatched": "Action",
+      "moodMatched": "Excited",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Action AND Mood = Excited THEN Recommend High-octane historical epics."
+    }
+  },
+  {
+    "id": "m10",
+    "title": "Taare Zameen Par",
+    "year": 2007,
+    "rating": 8.3,
+    "type": "Movie",
+    "genre": "Drama",
+    "secondaryGenre": "Family",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Romantic",
+    "poster": "https://image.tmdb.org/t/p/w500/8lT5r5s8lYwQv4T1W2K3Z4k5V6b.jpg",
+    "description": "An eight-year-old boy is thought to be a lazy trouble-maker, until the new art teacher has the patience and compassion to discover the real problem behind his struggles.",
+    "aiRuleMatch": {
+      "genreMatched": "Drama",
+      "moodMatched": "Romantic",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Drama AND Language = Hindi THEN Recommend Heartfelt inspirational dramas."
+    }
+  },
+  {
+    "id": "m11",
+    "title": "Drishyam",
+    "year": 2015,
+    "rating": 8.3,
+    "type": "Movie",
+    "genre": "Thriller",
+    "secondaryGenre": "Mystery",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Curious",
+    "poster": "https://image.tmdb.org/t/p/w500/p4vdD0Jm1D3M2j5X69r1gJt6A6.jpg",
+    "description": "Desperate measures are taken by a man who tries to save his family from the dark side of the law after they commit an unexpected crime.",
+    "aiRuleMatch": {
+      "genreMatched": "Thriller",
+      "moodMatched": "Curious",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Thriller AND Mood = Curious THEN Recommend Gripping investigative mysteries."
+    }
+  },
+  {
+    "id": "m12",
+    "title": "Baahubali 2: The Conclusion",
+    "year": 2017,
+    "rating": 8.2,
+    "type": "Movie",
+    "genre": "Action",
+    "secondaryGenre": "Adventure",
+    "duration": "Long",
+    "language": "Hindi",
+    "mood": "Excited",
+    "poster": "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+    "description": "When Shiva, the son of Bahubali, learns about his heritage, he begins to look for answers while plotting revenge against the tyrannical king Bhallaladeva.",
+    "aiRuleMatch": {
+      "genreMatched": "Action",
+      "moodMatched": "Excited",
+      "languageMatched": "Hindi",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Action AND Mood = Excited THEN Recommend Grand cinematic kingdom sagas."
+    }
+  },
+  {
+    "id": "m13",
+    "title": "Spider-Man: No Way Home",
+    "year": 2021,
+    "rating": 8.2,
+    "type": "Movie",
+    "genre": "Action",
+    "secondaryGenre": "Sci-Fi",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Excited",
+    "poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+    "description": "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds appear.",
+    "aiRuleMatch": {
+      "genreMatched": "Action",
+      "moodMatched": "Excited",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Action AND Mood = Excited THEN Recommend Multiverse superhero adventures."
+    }
+  },
+  {
+    "id": "m14",
+    "title": "The Matrix",
+    "year": 1999,
+    "rating": 8.7,
+    "type": "Movie",
+    "genre": "Sci-Fi",
+    "secondaryGenre": "Action",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Curious",
+    "poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    "description": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+    "aiRuleMatch": {
+      "genreMatched": "Sci-Fi",
+      "moodMatched": "Curious",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Sci-Fi AND Mood = Curious THEN Recommend Mind-bending cyberpunk thrillers."
+    }
+  },
+  {
+    "id": "m15",
+    "title": "Jurassic Park",
+    "year": 1993,
+    "rating": 8.2,
+    "type": "Movie",
+    "genre": "Adventure",
+    "secondaryGenre": "Sci-Fi",
+    "duration": "Medium",
+    "language": "English",
+    "mood": "Excited",
+    "poster": "https://image.tmdb.org/t/p/w500/oU7Oq2kFAAlGqbU4VoAE36g4ho1.jpg",
+    "description": "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes cloned dinosaurs to run loose.",
+    "aiRuleMatch": {
+      "genreMatched": "Adventure",
+      "moodMatched": "Excited",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Adventure AND Mood = Excited THEN Recommend Classic prehistoric creature adventures."
+    }
+  },
+  {
+    "id": "m16",
+    "title": "Titanic",
+    "year": 1997,
+    "rating": 7.9,
+    "type": "Movie",
+    "genre": "Romance",
+    "secondaryGenre": "Drama",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Romantic",
+    "poster": "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+    "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+    "aiRuleMatch": {
+      "genreMatched": "Romance",
+      "moodMatched": "Romantic",
+      "languageMatched": "English",
+      "ratingMatched": "7+",
+      "ruleFired": "IF Genre = Romance AND Mood = Romantic THEN Recommend Epic historical romances."
+    }
+  },
+  {
+    "id": "m17",
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "rating": 9.3,
+    "type": "Movie",
+    "genre": "Drama",
+    "secondaryGenre": "Crime",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Serious",
+    "poster": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "aiRuleMatch": {
+      "genreMatched": "Drama",
+      "moodMatched": "Serious",
+      "languageMatched": "English",
+      "ratingMatched": "9+",
+      "ruleFired": "IF Genre = Drama AND Rating >= 9.0 THEN Recommend Legendary acclaimed prison dramas."
+    }
+  },
+  {
+    "id": "m18",
+    "title": "Forrest Gump",
+    "year": 1994,
+    "rating": 8.8,
+    "type": "Movie",
+    "genre": "Drama",
+    "secondaryGenre": "Romance",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Happy",
+    "poster": "https://image.tmdb.org/t/p/w500/arw2VCBveWOVZr6pxd9XTd1TdQa.jpg",
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
+    "aiRuleMatch": {
+      "genreMatched": "Drama",
+      "moodMatched": "Happy",
+      "languageMatched": "English",
+      "ratingMatched": "8+",
+      "ruleFired": "IF Genre = Drama AND Mood = Happy THEN Recommend Uplifting life journey epics."
+    }
+  },
+  {
+    "id": "m19",
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "year": 2001,
+    "rating": 7.6,
+    "type": "Movie",
+    "genre": "Adventure",
+    "secondaryGenre": "Fantasy",
+    "duration": "Long",
+    "language": "English",
+    "mood": "Curious",
+    "poster": "https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
+    "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
+    "aiRuleMatch": {
+      "genreMatched": "Adventure",
+      "moodMatched": "Curious",
+      "languageMatched": "English",
+      "ratingMatched": "7+",
+      "ruleFired": "IF Genre = Adventure AND Mood = Curious THEN Recommend Magical wizarding fantasy epics."
+    }
+  }
+]
